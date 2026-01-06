@@ -3,22 +3,22 @@
     {
       "id": "1716",
       "text": "Nueva Tarea",
-      "completed": false
+      "completed": true
     },
     {
       "id": "9942",
       "text": "Hola Mudno",
-      "completed": false
+      "completed": true
     },
     {
       "id": "ff14",
       "text": "asd",
-      "completed": false
+      "completed": true
     },
     {
       "id": "e67e",
       "text": "ads",
-      "completed": false
+      "completed": true
     }
   ]
 }

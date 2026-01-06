@@ -37,7 +37,7 @@ const ButtonChecked = ({ nota, onEditarNote, texto }) => {
     return (
         <div className="flex items-center">
             <input className="accent-slate-600 size-5 mr-5" type="checkbox" onChange={handleOnChange} />
-            <p className={`${decoration ? "line-through" : "decoration-0"}`}>{texto}</p>
+            <p className={`${decoration ? "line-through text-neutral-500" : "decoration-0 text-black"}`}>{texto}</p>
         </div>
     )
 }

@@ -40,7 +40,7 @@ const TodoForm = ({ onAgregarNota }) => {
             <div className="flex flex-col items-center">
                 <h2 className="font-bold text-3xl my-0 align-middle font-sans text-blue-950">Todo List</h2>
                 <form className="flex items-center flex-col" onSubmit={handleSubmit}>
-                    <div className="bg-none w-full ml-4 mt-0 mb-5 align-middle flex items-stretch overflow-hidden rounded-l-lg rounded-r-lg shadow-xs shadow-gray-600">
+                    <div className="bg-neutral-100 w-full ml-4 mt-0 mb-5 align-middle flex items-stretch overflow-hidden rounded-l-lg rounded-r-lg shadow-xs shadow-gray-600">
                         <input
                             className="text-wrap text-[1.3rem] placeholder-neutral-400 w-full h-10 pl-4 outline-none "
                             type="text"
@@ -59,7 +59,7 @@ const TodoForm = ({ onAgregarNota }) => {
                         </button>
                     </div>
                     <div className="mb-3 flex justify-between">
-                        
+
                     </div>
                 </form>
             </div>
