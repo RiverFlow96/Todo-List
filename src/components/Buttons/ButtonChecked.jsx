@@ -1,6 +1,9 @@
 import "./ButtonChecked.css"
+import { useState } from "react"
 
-const ButtonChecked = ({ nota, onEditarNote }) => {
+const ButtonChecked = ({ nota, onEditarNote, texto }) => {
+
+    const [decoration, setDecoration] = useState(false)
 
     const handleOnChange = async (e) => {
         e.preventDefault()
@@ -21,8 +24,7 @@ const ButtonChecked = ({ nota, onEditarNote }) => {
             const notaActualizada = await response.json()
 
             e.target.checked = notaActualizada.completed
-
-            console.log(notaActualizada)
+            setDecoration(notaActualizada.completed)
 
             onEditarNote(notaActualizada)
 
@@ -33,7 +35,10 @@ const ButtonChecked = ({ nota, onEditarNote }) => {
     }
 
     return (
-        <input className="size-5 align-middle" type="checkbox" onChange={handleOnChange} />
+        <div className="flex items-center">
+            <input className="accent-slate-600 size-5 mr-5" type="checkbox" onChange={handleOnChange} />
+            <p className={`${decoration ? "line-through" : "decoration-0"}`}>{texto}</p>
+        </div>
     )
 }
 

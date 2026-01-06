@@ -43,7 +43,6 @@ function TodoAPP({ }) {
                 if (!response.ok) {
                     throw new Error(`Error al eliminar la nota: ${response.status}`)
                 }
-                console.log("Nota eliminada")
             })
             .catch(error => console.log(error))
     }
@@ -55,15 +54,15 @@ function TodoAPP({ }) {
     }
 
     return (
-        <div className="max-w-[70dvw] bg-white shadow-md shadow-slate-800 rounded-2xl p-5">
+        <div className="max-w-[60dvw] min-w-[40dvw] bg-white shadow-md shadow-slate-800 rounded-2xl p-5">
             <TodoForm onAgregarNota={agregarNota}></TodoForm>
             <div className="flex pt-0 pb-5 items-center w-full">
                 <div className="grow border-t border-gray-400"></div>
             </div >
             <ul className="p-2 h-100 overflow-y-auto">
-                {notas.map(nota => <li className="my-3 text-[1.3rem] flex flex-row justify-between" key={nota.id}>
+                {notas.map(nota => <li className={`my-3 text-[1.3rem] flex flex-row justify-between items-center align-middle`} key={nota.id}>
                     <span>
-                        <ButtonChecked nota={nota} onEditarNote={actualizarNota}></ButtonChecked> {nota.text}
+                        <ButtonChecked texto={nota.text} nota={nota} onEditarNote={actualizarNota}></ButtonChecked>
                     </span>
                     <div className="flex items-center">
                         <SquarePen className="hover:shadow-md hover:shadow-green-400" strokeWidth="1.5px" onClick={() => setNotaEditandoId(nota.id)} size={26} />
