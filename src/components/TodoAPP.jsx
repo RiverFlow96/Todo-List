@@ -59,6 +59,7 @@ function TodoAPP({ }) {
             <div className="flex pt-0 pb-5 items-center w-full">
                 <div className="grow border-t border-gray-400"></div>
             </div >
+
             <ul className="p-2 h-100 overflow-y-auto">
                 {notas.map(nota => <li className={`my-3 text-[1.3rem] flex flex-row justify-between items-center align-middle`} key={nota.id}>
                     <span>

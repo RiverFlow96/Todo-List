@@ -38,8 +38,8 @@ const TodoForm = ({ onAgregarNota }) => {
     return (
         <div className="w-full text-center">
             <div className="flex flex-col items-center">
-                <h2 className="font-bold text-3xl my-0 align-middle font-sans text-blue-950">Todo List</h2>
-                <form className="flex items-center flex-col" onSubmit={handleSubmit}>
+                <h2 className="font-extrabold text-3xl my-0 align-middle font-sans text-red-800">Todo List</h2>
+                <form className="flex items-center flex-col w-[60%]" onSubmit={handleSubmit}>
                     <div className="bg-neutral-100 w-full ml-4 mt-0 mb-5 align-middle flex items-stretch overflow-hidden rounded-l-lg rounded-r-lg shadow-xs shadow-gray-600">
                         <input
                             className="text-wrap text-[1.3rem] placeholder-neutral-400 w-full h-10 pl-4 outline-none "
@@ -51,7 +51,6 @@ const TodoForm = ({ onAgregarNota }) => {
                             placeholder="Escribir tarea..."
                         />
                         <button
-                            // className="font-bold text-center cursor-pointer bg-slate-600 w-[5dvw] h-[4dvh] box-border align-middle text-white border-2 border-black rounded-full"
                             className="rounded-r-lg align-middle bg-slate-600 px-4 flex items-center justify-center cursor-pointer transition-color "
                             type="submit"
                         >
