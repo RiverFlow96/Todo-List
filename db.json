@@ -2,7 +2,52 @@
   "notas": [
     {
       "id": "95c3",
-      "text": "knin",
+      "text": "Primera Nota",
+      "completed": true
+    },
+    {
+      "id": "075f",
+      "text": "Segunda Nota",
+      "completed": false
+    },
+    {
+      "id": "6167",
+      "text": "Tercera Nota",
+      "completed": true
+    },
+    {
+      "id": "eb94",
+      "text": "Cuarta Nota",
+      "completed": false
+    },
+    {
+      "id": "a093",
+      "text": "Quinta Nota",
+      "completed": true
+    },
+    {
+      "id": "31be",
+      "text": "Sexta Nota",
+      "completed": false
+    },
+    {
+      "id": "a040",
+      "text": "Septima Nota",
+      "completed": true
+    },
+    {
+      "id": "3b03",
+      "text": "Octava Nota",
+      "completed": false
+    },
+    {
+      "id": "a8bb",
+      "text": "Novena Nota",
+      "completed": true
+    },
+    {
+      "id": "a6e2",
+      "text": "Decima Nota",
       "completed": false
     }
   ]
