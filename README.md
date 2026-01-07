@@ -1,8 +1,11 @@
-# 📑 Simple Todo-List
+
+<div align="center">
+    <h1>📑 Simple Todo-List</h1>
+</div>
 
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=git,kubernetes,docker,c,vim" />
+    <img src="https://skillicons.dev/icons?i=git,html,css,react,js,tailwind" />
   </a>
 </p>
 
