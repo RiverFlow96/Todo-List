@@ -1,12 +1,15 @@
-import { useState } from "react"
-
+import { use, useState } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { setTextNote } from "../../features/textNoteSlice"
 import "./TodoForm.css"
 import { Plus } from "lucide-react"
+import { distance } from "framer-motion"
 
 // Componente TodoForm para añadir nuevas notas
 const TodoForm = ({ onAgregarNota }) => {
     // Estado para gestionar el texto de entrada de una nueva nota
-    const [textNote, setTextNote] = useState("")
+    const textNote = useSelector((state) => state.textNote.value)
+    const dispatch = useDispatch()
 
     // Manejador de eventos para el envío del formulario
     const handleSubmit = (event) => {
@@ -58,7 +61,7 @@ const TodoForm = ({ onAgregarNota }) => {
                             name="nota"
                             id="nota"
                             value={textNote}
-                            onChange={(event) => setTextNote(event.target.value)}
+                            onChange={(event) => dispatch(setTextNote(event.target.value))}
                             placeholder="Escribir tarea..."
                         />
                         {/* Botón para enviar la nueva tarea */}

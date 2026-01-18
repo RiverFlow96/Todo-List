@@ -1,11 +1,21 @@
 import "../TodoAPP.css"
 import { useState } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { setTextoEditado } from "../../features/textoEditadoSlice"
+import { useEffect } from "react"
 
 // Componente EditNoteForm para editar una nota existente
 const EditNoteForm = ({ nota, onEditarNote, onCancelar }) => {
 
     // Estado para guardar el texto editado de la nota
-    const [textoEditado, setTextoEditado] = useState()
+    const textoEditado = useSelector((state) => state.textoEditado.value)
+    const dispatch = useDispatch()
+
+    // Hook useEffect para inicializar el estado de Redux con el texto de la nota actual
+    useEffect(() => {
+        dispatch(setTextoEditado(nota.text));
+    }, [nota.text, dispatch]); // Se ejecuta cuando el texto de la nota cambia o el dispatch cambia (raro)
+
 
     // Manejador de eventos para el envío del formulario al guardar cambios
     const handleSubmit = async (e) => {
@@ -45,7 +55,7 @@ const EditNoteForm = ({ nota, onEditarNote, onCancelar }) => {
                 className="box-border bg-gray-200 w-2xs  h-8 align-middle  shadow-md shadow-gray-600 border-black border-2 rounded-2xl"
                 type="text"
                 value={textoEditado}
-                onChange={(e) => setTextoEditado(e.target.value)}
+                onChange={(e) => dispatch(setTextoEditado(e.target.value))}
             />
             {/* Botón para guardar la nota editada */}
             <button

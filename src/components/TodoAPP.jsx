@@ -1,16 +1,19 @@
 import { useState, useEffect, use, act } from "react"
-import TodoForm from "./TodoForm/TodoForm"
 import { Edit, SquarePen, Trash } from "lucide-react"
+import TodoForm from "./TodoForm/TodoForm"
 import EditNoteForm from "./EditNoteForm/EditNoteForm"
-import "./TodoAPP.css"
 import ButtonChecked from "./Buttons/ButtonChecked"
+import "./TodoAPP.css"
+import { useSelector, useDispatch } from "react-redux"
+import { setNotas, addNota, updateNota, setNotaEditandoId } from "../features/notasSlice"
 
 // Componente TodoAPP, el contenedor principal para la aplicación de lista de tareas
 function TodoAPP({ }) {
     // Estado para almacenar la lista de notas
-    const [notas, setNotas] = useState([])
+    const notas = useSelector((state) => state.notas.value)
+    const dispatch = useDispatch()
     // Estado para gestionar qué nota se está editando actualmente
-    const [notaEditandoId, setNotaEditandoId] = useState(null)
+    const notaEditandoId = useSelector((state) => state.notas.notaEditandoId);
 
     // Hook useEffect para obtener notas de la API al montar el componente
     useEffect(() => {
@@ -36,13 +39,13 @@ function TodoAPP({ }) {
 
     // Función para añadir una nueva nota a la lista
     const agregarNota = (nuevaNota) => {
-        setNotas([...notas, nuevaNota])
+        dispatch(addNota(nuevaNota))
     }
 
     // Función para manejar la eliminación de una nota
     const handleClickDelete = (id) => {
         // Filtra la nota eliminada del estado
-        setNotas(notas.filter(nota => nota.id !== id))
+        dispatch(setNotas(notas.filter(nota => nota.id !== id)))
         // Llamada a la API para eliminar la nota del servidor
         fetch(`http://localhost:3000/notas/${id}`, {
             method: "DELETE"
@@ -58,9 +61,7 @@ function TodoAPP({ }) {
     // Función para actualizar una nota existente
     const actualizarNota = (notaActualizada) => {
         // Mapea sobre las notas y reemplaza la nota actualizada
-        setNotas(notas.map(nota => {
-            return nota.id === notaActualizada.id ? notaActualizada : nota
-        }))
+        dispatch(updateNota(notaActualizada))
     }
 
     return (
@@ -81,7 +82,7 @@ function TodoAPP({ }) {
                     </span>
                     <div className="flex items-center">
                         {/* Botón de editar */}
-                        <SquarePen className="hover:shadow-md hover:shadow-green-400" strokeWidth="1.5px" onClick={() => setNotaEditandoId(nota.id)} size={26} />
+                        <SquarePen className="hover:shadow-md hover:shadow-green-400" strokeWidth="1.5px" onClick={() => dispatch(setNotaEditandoId(nota.id))} size={26} />
                         {/* Botón de eliminar */}
                         <Trash className="hover:shadow-md hover:shadow-red-400" strokeWidth="1.5px" onClick={() => handleClickDelete(nota.id)} size={26} />
                     </div>
@@ -91,7 +92,7 @@ function TodoAPP({ }) {
                             <EditNoteForm
                                 nota={nota}
                                 onEditarNote={actualizarNota}
-                                onCancelar={() => setNotaEditandoId(null)}
+                                onCancelar={() => dispatch(setNotaEditandoId(null))}
                             />
                         )
                     }
