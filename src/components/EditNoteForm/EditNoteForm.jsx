@@ -1,15 +1,19 @@
 import "../TodoAPP.css"
 import { useState } from "react"
 
+// Componente EditNoteForm para editar una nota existente
 const EditNoteForm = ({ nota, onEditarNote, onCancelar }) => {
 
+    // Estado para guardar el texto editado de la nota
     const [textoEditado, setTextoEditado] = useState()
 
+    // Manejador de eventos para el envío del formulario al guardar cambios
     const handleSubmit = async (e) => {
 
         e.preventDefault()
 
         try {
+            // Llamada a la API para actualizar el texto de la nota
             const response = await fetch(`http://localhost:3000/notas/${nota.id}`, {
                 method: "PATCH",
                 headers: {
@@ -22,9 +26,12 @@ const EditNoteForm = ({ nota, onEditarNote, onCancelar }) => {
                 throw new Error(`Error http: ${response.status}`)
             }
 
+            // Analiza la nota actualizada de la respuesta
             const notaActualizada = await response.json()
 
+            // Callback para actualizar la nota en el estado del componente padre
             onEditarNote(notaActualizada)
+            // Callback para cancelar el modo de edición
             onCancelar()
         } catch (error) {
             console.error(error)
@@ -33,18 +40,21 @@ const EditNoteForm = ({ nota, onEditarNote, onCancelar }) => {
 
     return (
         <form onSubmit={handleSubmit} className="flex flex-col box-border items-center">
+            {/* Campo de entrada para editar el texto de la nota */}
             <input
                 className="box-border bg-gray-200 w-2xs  h-8 align-middle  shadow-md shadow-gray-600 border-black border-2 rounded-2xl"
                 type="text"
                 value={textoEditado}
                 onChange={(e) => setTextoEditado(e.target.value)}
             />
+            {/* Botón para guardar la nota editada */}
             <button
                 className="bg-slate-600 rounded-full w-2xs size-10 text-white flex items-center justify-center border-white border-2 shadow-md shadow-slate-700"
                 type="submit"
             >
                 Guardar
             </button>
+            {/* Botón para cancelar la edición y descartar cambios */}
             <button className="bg-slate-600 rounded-full w-2xs size-10 text-white flex items-center justify-center border-white border-2 shadow-md shadow-slate-700" type="button" onClick={onCancelar}>Cancelar</button>
 
         </form>

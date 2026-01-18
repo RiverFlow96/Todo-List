@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
 
+// Configura la tienda (store) de Redux
 export const store = configureStore({
     reducer: {
-        // Add your reducers here
+        // Añade tus reducers aquí
     },
 });
 

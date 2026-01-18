@@ -1,3 +1,4 @@
+// Componente ButtonCompleteds (actualmente un marcador de posición)
 const ButtonCompleteds = () => {
 
 
