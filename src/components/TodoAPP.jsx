@@ -26,7 +26,7 @@ function TodoAPP({ }) {
 
                 const data = await response.json()
 
-                setNotas(data)
+                dispatch(setNotas(data))
 
             } catch (error) {
                 console.log(error)

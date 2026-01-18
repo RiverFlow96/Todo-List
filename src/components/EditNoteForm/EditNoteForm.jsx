@@ -13,7 +13,7 @@ const EditNoteForm = ({ nota, onEditarNote, onCancelar }) => {
 
     // Hook useEffect para inicializar el estado de Redux con el texto de la nota actual
     useEffect(() => {
-        dispatch(setTextoEditado(nota.text));
+        dispatch(setTextoEditado(nota.text ?? ""));
     }, [nota.text, dispatch]); // Se ejecuta cuando el texto de la nota cambia o el dispatch cambia (raro)
 
 
